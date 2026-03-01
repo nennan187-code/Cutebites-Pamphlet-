@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Sweet Cravings</title>
+    <style>
+        /* Base styles */
+        body {
+            margin: 0;
+            font-family: 'Comic Sans MS', cursive, Arial;
+            background: linear-gradient(135deg, #FFC0CB, #87CEEB);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+             }
+
+        /* Floating sparkles behind the box */
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: sparkleMove linear infinite;
+        }
+
+        @keyframes sparkleMove {
+            0% { transform: translateY(0) scale(1); opacity: 0.8; }
+            50% { transform: translateY(-100px) scale(1.5); opacity: 0.3; }
+            100% { transform: translateY(-200px) scale(0); opacity: 0; }
+        }
+
+        /* Main box */
+        .box {
+            position: relative;
+            text-align: center;
+            background: linear-gradient(145deg, #fffaf0, #f5f5dc);
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+            animation: fadeIn 1.5s ease forwards;
+            z-index: 1;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        h1 {
+            color: #6d4c41;
+            margin-bottom: 15px;
+            font-size: 2.2em;
+        }
+
+        p {
+            margin: 10px 0 25px;
+            font-size: 1.2em;
+            color: #7d5a50;
+        }
+
+        /* Cute button */
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 28px;
+            background: #ff8fa3;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: 0.4s;
+            box-shadow: 0 6px 15px rgba(255,143,163,0.5);
+            cursor: pointer;
+        }
+
+        a:hover {
+            background: #ff6f91;
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(255,143,163,0.6);
+        }
+
+        /* Footer */
+        footer {
+            position: absolute;
+            bottom: 15px;
+            text-align: center;
+            width: 100%;
+            color: #c65c69;
+            font-size: 0.9em;
+        }
+
+        /* Floating emoji effect */
+        .emoji {
+            position: fixed;
+            font-size: 24px;
+            animation: floatUp 1.5s ease-out forwards;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        @keyframes floatUp {
+            0% { opacity: 1; transform: translateY(0) scale(1); }
+            100% { opacity: 0; transform: translateY(-80px) scale(1.5); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sparkles -->
+    <div class="sparkle" style="left:10%; animation-duration: 5s;"></div>
+    <div class="sparkle" style="left:30%; animation-duration: 7s;"></div>
+    <div class="sparkle" style="left:50%; animation-duration: 6s;"></div>
+    <div class="sparkle" style="left:70%; animation-duration: 5.5s;"></div>
+    <div class="sparkle" style="left:85%; animation-duration: 8s;"></div>
+
+    <!-- Main box -->
+    <div class="box">
+        <h1>🍰 Welcome to  Cutebites Pamphlet 🍝</h1>
+        <h2>ᶠᵒᵒᵈ ᶦⁿᵍʳᵉᵈᶦᵉⁿᵗˢ ᵃʳᵒᵘⁿᵈ ᵗʰᵉ ʷᵒʳˡᵈ</h2>
+        <p>💕 Your cozy online recipe book ✨</p>
+        <a href="index.html" onclick="createEmojis(event)">Enter Recipes</a>
+    </div>
+
+    <footer>
+        <p style="color: #c65c69;">© 2026 RockyJames B. Gepte & Fatima Nhezreen D. Serabani | Sandalwood | ICT</p>
+    </footer>
+
+    <!-- Emoji script -->
+    <script>
+        function createEmojis(event) {
+            const emojis = ["✨","🍰","💕","😋","🍝","🧁"];
+            for (let i = 0; i < 6; i++) {
+                const emoji = document.createElement("div");
+                emoji.classList.add("emoji");
+                emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                emoji.style.left = (event.clientX + Math.random() * 40 - 20) + "px";
+                emoji.style.top = (event.clientY + Math.random() * 20 - 10) + "px";
+                document.body.appendChild(emoji);
+                setTimeout(() => { emoji.remove(); }, 1500);
+            }
+        }
+    </script>
+
+</body>
+</html>
